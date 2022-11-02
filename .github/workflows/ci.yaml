@@ -1,18 +1,19 @@
-name: Continuous Integration
- 
+name: CI Learn NodeJS
+
 on:
+  push:
+    branches: [ "master" ]
   pull_request:
-    branches:
-      - master
- 
+    branches: [ "master" ]
+
 jobs:
   test:
     runs-on: ubuntu-latest
- 
+
     strategy:
       matrix:
         node-version: [14.x]
- 
+
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
@@ -23,3 +24,4 @@ jobs:
         run: |
           npm install
           npm run test
+          
